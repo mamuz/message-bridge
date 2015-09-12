@@ -1,9 +1,16 @@
 Message Bridge
 =================
 
+[![Author](http://img.shields.io/badge/author-@mamuz_de-blue.svg?style=flat-square)](https://twitter.com/mamuz_de)
+[![Build Status](https://img.shields.io/travis/mamuz/message-bridge.svg?style=flat-square)](https://travis-ci.org/mamuz/message-bridge)
+[![Latest Stable Version](https://img.shields.io/packagist/v/mamuz/message-bridge.svg?style=flat-square)](https://packagist.org/packages/mamuz/message-bridge)
+[![Total Downloads](https://img.shields.io/packagist/dt/mamuz/message-bridge.svg?style=flat-square)](https://packagist.org/packages/mamuz/message-bridge)
+[![License](https://img.shields.io/packagist/l/mamuz/message-bridge.svg?style=flat-square)](https://packagist.org/packages/mamuz/message-bridge)
+
+
 Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
 A registered callback can dispatch or forward all triggered messages.
-Main idea is to support a decoupled event driven or aspect oriented application, thus object awareness to any
+Main idea is to support a decoupled event driven and aspect oriented application, thus object awareness to any
 logger or any event dispatcher is not needed anymore.
 
 ## Installation

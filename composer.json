@@ -1,10 +1,10 @@
 {
   "name": "mamuz/message-bridge",
   "type": "library",
-  "description": "",
+  "description": "Message bridge to support a decoupled event driven and aspect oriented application",
   "homepage": "https://github.com/mamuz/message-bridge",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ['message', 'event', 'aop', 'bridge'],
   "authors": [
     {
       "name": "Marco Muths",
