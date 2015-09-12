@@ -4,7 +4,7 @@ Message Bridge
 Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
 A registered callback can dispatch or forward all triggered messages.
 Main idea is to support a decoupled event driven or aspect oriented application, thus object awareness to any
-logger or any event dispatcher is not needed.
+logger or any event dispatcher is not needed anymore.
 
 ## Installation
 
