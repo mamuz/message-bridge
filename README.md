@@ -1,9 +1,10 @@
 Message Bridge
 =================
 
-Message Bridge let you trigger messages from anywhere in a procedural or in a object-oriented way.
-A registered callback can dispatch all triggered messages.
-Main idea is to support a decoupled event driven application.
+Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
+A registered callback can dispatch or forward all triggered messages.
+Main idea is to support a decoupled event driven or aspect oriented application, thus object awareness to any
+logger or any event dispatcher is not needed.
 
 ## Installation
 
@@ -13,7 +14,7 @@ The recommended way to install
 
 ```json
 {
-    "require-dev": {
+    "require": {
         "mamuz/message-bridge": "0.*"
     }
 }
@@ -21,18 +22,33 @@ The recommended way to install
 
 ## Example
 
-### Register dispatching callback globally
+### Procedural
 
 ```php
+
+// Register dispatch callback globally
+
 setMessageDispatcher(function ($msg, $argv, $emitter) {
     if ($msg == 'user.registered') {
         mail('foo@bar.com', 'A new user entered', 'UserId ' . $argv['userId']);
     }
 });
+
+// Trigger any message anywhere
+
+triggerMessage('user.registered', array('userId' => 1234));
 ```
 
-### Trigger any message anywhere
+### Object oriented with forwarding
 
 ```php
-triggerMessage('user.registered', array('userId' => 1234));
+
+$bridge = \MsgBridge\MessageBridge::getInstance();
+$bridge->setDispatcher(function ($msg, $argv, $emitter) use ($eventManager) {
+    $eventManager->trigger($msg, $argv, $emitter);
+});
+
+// ...
+
+$bridge->trigger('user.registered', array('userId' => 1234));
 ```
