@@ -25,9 +25,7 @@ The recommended way to install
 ### Procedural
 
 ```php
-
 // Register dispatch callback globally
-
 setMessageDispatcher(function ($msg, $argv, $emitter) {
     if ($msg == 'user.registered') {
         mail('foo@bar.com', 'A new user entered', 'UserId ' . $argv['userId']);
@@ -35,14 +33,12 @@ setMessageDispatcher(function ($msg, $argv, $emitter) {
 });
 
 // Trigger any message anywhere
-
 triggerMessage('user.registered', array('userId' => 1234));
 ```
 
-### Object oriented with forwarding
+### Object oriented way with forwarding
 
 ```php
-
 $bridge = \MsgBridge\MessageBridge::getInstance();
 $bridge->setDispatcher(function ($msg, $argv, $emitter) use ($eventManager) {
     $eventManager->trigger($msg, $argv, $emitter);
