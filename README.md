@@ -7,7 +7,6 @@ Message Bridge
 [![Total Downloads](https://img.shields.io/packagist/dt/mamuz/message-bridge.svg?style=flat-square)](https://packagist.org/packages/mamuz/message-bridge)
 [![License](https://img.shields.io/packagist/l/mamuz/message-bridge.svg?style=flat-square)](https://packagist.org/packages/mamuz/message-bridge)
 
-
 Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
 A registered callback can dispatch or forward all triggered messages.
 Main idea is to support a decoupled event driven and aspect oriented application, thus object awareness to any
