@@ -1,8 +1,8 @@
 {
-  "name": "mamuz/php-message-builder",
+  "name": "mamuz/message-bridge",
   "type": "library",
   "description": "",
-  "homepage": "https://github.com/mamuz/php-message-builder",
+  "homepage": "https://github.com/mamuz/message-bridge",
   "license": "MIT",
   "keywords": [],
   "authors": [
@@ -12,8 +12,8 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/mamuz/php-message-builder/issues",
-    "source": "https://github.com/mamuz/php-message-builder"
+    "issues": "https://github.com/mamuz/message-bridge/issues",
+    "source": "https://github.com/mamuz/message-bridge"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
@@ -28,12 +28,12 @@
       "src/message_functions.php"
     ],
     "psr-4": {
-      "MsgExt\\": "src/"
+      "MsgBridge\\": "src/"
     }
-  }
+  },
   "autoload-dev": {
     "psr-4": {
-      "MsgExtTest\\": "tests/"
+      "MsgBridgeTest\\": "tests/"
     }
   }
 }

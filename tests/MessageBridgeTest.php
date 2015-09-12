@@ -23,9 +23,9 @@
  * SOFTWARE.
  */
 
-namespace MsgExtTest;
+namespace MsgBridgeTest;
 
-class MessageHandlerTest extends \PHPUnit_Framework_TestCase
+class MessageBridgeTest extends \PHPUnit_Framework_TestCase
 {
     public function testTriggerMessageWithoutDispatcher()
     {

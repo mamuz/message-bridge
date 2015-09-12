@@ -31,7 +31,7 @@ if (!function_exists('setMessageDispatcher')) {
      */
     function setMessageDispatcher(\Closure $dispatcher, $lock = true)
     {
-        $messageHandler = \MsgExt\MessageHandler::getInstance();
+        $messageHandler = \MsgBridge\MessageBridge::getInstance();
         $existingDispatcher = $messageHandler->getDispatcher();
         $messageHandler->bindDispatcher($dispatcher, $lock);
 
@@ -48,7 +48,7 @@ if (!function_exists('triggerMessage')) {
      */
     function triggerMessage($name, array $argv = array(), $emitter = null)
     {
-        $messageHandler = \MsgExt\MessageHandler::getInstance();
+        $messageHandler = \MsgBridge\MessageBridge::getInstance();
         return $messageHandler->trigger($name, $argv, $emitter);
     }
 }

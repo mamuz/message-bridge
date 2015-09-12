@@ -23,9 +23,9 @@
  * SOFTWARE.
  */
 
-namespace MsgExt;
+namespace MsgBridge;
 
-class MessageHandler
+class MessageBridge
 {
     /** @var self */
     private static $instance;
