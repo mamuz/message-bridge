@@ -5,6 +5,20 @@ Message Bridge let you trigger messages from anywhere in a procedural or in a ob
 A registered callback can dispatch all triggered messages.
 Main idea is to support a decoupled event driven application.
 
+## Installation
+
+The recommended way to install
+[`mamuz/message-bridge`](https://packagist.org/packages/mamuz/message-bridge) is through
+[composer](http://getcomposer.org/) by adding dependency to your `composer.json`:
+
+```json
+{
+    "require-dev": {
+        "mamuz/message-bridge": "0.*"
+    }
+}
+```
+
 ## Example
 
 ### Register dispatching callback globally
@@ -21,18 +35,4 @@ setMessageDispatcher(function ($msg, $argv, $emitter) {
 
 ```php
 triggerMessage('user.registered', array('userId' => 1234));
-```
-
-## Installation
-
-The recommended way to install
-[`mamuz/message-bridge`](https://packagist.org/packages/mamuz/message-bridge) is through
-[composer](http://getcomposer.org/) by adding dependency to your `composer.json`:
-
-```json
-{
-    "require-dev": {
-        "mamuz/message-bridge": "0.*"
-    }
-}
 ```
