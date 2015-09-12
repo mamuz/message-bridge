@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The MIT License (MIT)
  *
@@ -23,7 +22,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-class MessageHandlerTest
-{
 
+namespace MsgExtTest;
+
+class MessageHandlerTest extends \PHPUnit_Framework_TestCase
+{
+    public function testTriggerMessageWithoutDispatcher()
+    {
+        $this->assertFalse(triggerMessage('Foo'));
+    }
+
+    public function testBindDispatcherUnlocked()
+    {
+        $dispatcher = function ($name, $argv, $emitter) {
+        };
+        $dispatcher2 = function ($name, $argv, $emitter) {
+        };
+
+        $this->assertNull(setMessageDispatcher($dispatcher, false));
+        $this->assertSame($dispatcher, setMessageDispatcher($dispatcher2, false));
+    }
+
+    public function testBindDispatcherLocked()
+    {
+        $dispatcher = function ($name, $argv, $emitter) {
+            return array($name, $argv, $emitter);
+        };
+
+        setMessageDispatcher($dispatcher);
+        $this->setExpectedException('RuntimeException');
+        setMessageDispatcher($dispatcher);
+    }
+
+    public function testTriggerMessage()
+    {
+        $name = 'foo';
+        $argv = array('foo' => 'bar');
+        $emitter = $this;
+        $result = triggerMessage($name, $argv, $emitter);
+
+        $this->assertSame(array($name, $argv, $emitter), $result);
+    }
 }
