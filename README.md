@@ -12,7 +12,7 @@ Main idea is to support a decoupled event driven application.
 ```php
 setMessageDispatcher(function ($msg, $argv, $emitter) {
     if ($msg == 'user.registered') {
-        mail('foo@bar.com', 'A new user has been registered', 'UserId ' . $argv['userId']);
+        mail('foo@bar.com', 'A new user entered', 'UserId ' . $argv['userId']);
     }
 });
 ```
