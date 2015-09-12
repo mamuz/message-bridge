@@ -1,2 +1,2 @@
-php-event-handler
+php-message-handler
 =================

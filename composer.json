@@ -1,0 +1,34 @@
+{
+  "name": "mamuz/php-message-builder",
+  "type": "library",
+  "description": "",
+  "homepage": "https://github.com/mamuz/php-message-builder",
+  "license": "MIT",
+  "keywords": [],
+  "authors": [
+    {
+      "name": "Marco Muths",
+      "email": "mamuz.de@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/mamuz/php-message-builder/issues",
+    "source": "https://github.com/mamuz/php-message-builder"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.6"
+  },
+  "autoload": {
+    "files": [
+      "src/message_functions.php"
+    ],
+    "psr-4": {
+      "MsgExt\\": "src/"
+    }
+  }
+}
