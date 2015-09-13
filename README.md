@@ -15,15 +15,11 @@ logger or any event dispatcher is not needed anymore.
 ## Installation
 
 The recommended way to install
-[`mamuz/message-bridge`](https://packagist.org/packages/mamuz/message-bridge) is through
-[composer](http://getcomposer.org/) by adding dependency to your `composer.json`:
+[`mamuz/message-bridge`](https://packagist.org/packages/mamuz/message-bridge) is via
+[composer](http://getcomposer.org/):
 
-```json
-{
-    "require": {
-        "mamuz/message-bridge": "0.*"
-    }
-}
+```sh
+php composer.phar require mamuz/message-bridge:.0.*
 ```
 
 ## Example
