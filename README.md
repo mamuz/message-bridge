@@ -19,7 +19,7 @@ The recommended way to install
 [composer](http://getcomposer.org/):
 
 ```sh
-php composer.phar require mamuz/message-bridge:.0.*
+php composer.phar require mamuz/message-bridge:0.*
 ```
 
 ## Example
