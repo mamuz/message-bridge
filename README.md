@@ -46,7 +46,7 @@ trigger_message('user.registered', array('userId' => 1234));
 
 ```php
 $bridge = \MsgBridge\MessageBridge::getInstance();
-$bridge->setDispatcher(function ($msg, $argv, $emitter) use ($eventManager) {
+$bridge->bindDispatcher(function ($msg, $argv, $emitter) use ($eventManager) {
     $eventManager->trigger($msg, $argv, $emitter);
 });
 
