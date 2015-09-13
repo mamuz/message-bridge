@@ -32,14 +32,14 @@ The recommended way to install
 
 ```php
 // Register dispatch callback globally
-setMessageDispatcher(function ($msg, $argv, $emitter) {
+set_message_dispatcher(function ($msg, $argv, $emitter) {
     if ($msg == 'user.registered') {
         mail('foo@bar.com', 'A new user entered', 'UserId ' . $argv['userId']);
     }
 });
 
 // Trigger any message anywhere
-triggerMessage('user.registered', array('userId' => 1234));
+trigger_message('user.registered', array('userId' => 1234));
 ```
 
 ### Object oriented way with forwarding

@@ -29,7 +29,7 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
 {
     public function testTriggerMessageWithoutDispatcher()
     {
-        $this->assertFalse(triggerMessage('Foo'));
+        $this->assertFalse(trigger_message('Foo'));
     }
 
     public function testBindDispatcherUnlocked()
@@ -39,8 +39,8 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
         $dispatcher2 = function ($name, $argv, $emitter) {
         };
 
-        $this->assertNull(setMessageDispatcher($dispatcher, false));
-        $this->assertSame($dispatcher, setMessageDispatcher($dispatcher2, false));
+        $this->assertNull(set_message_dispatcher($dispatcher, false));
+        $this->assertSame($dispatcher, set_message_dispatcher($dispatcher2, false));
     }
 
     public function testBindDispatcherLocked()
@@ -49,9 +49,9 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
             return array($name, $argv, $emitter);
         };
 
-        setMessageDispatcher($dispatcher);
+        set_message_dispatcher($dispatcher);
         $this->setExpectedException('RuntimeException');
-        setMessageDispatcher($dispatcher);
+        set_message_dispatcher($dispatcher);
     }
 
     public function testTriggerMessage()
@@ -59,7 +59,7 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
         $name = 'foo';
         $argv = array('foo' => 'bar');
         $emitter = $this;
-        $result = triggerMessage($name, $argv, $emitter);
+        $result = trigger_message($name, $argv, $emitter);
 
         $this->assertSame(array($name, $argv, $emitter), $result);
     }

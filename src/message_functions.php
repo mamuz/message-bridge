@@ -23,13 +23,13 @@
  * SOFTWARE.
  */
 
-if (!function_exists('setMessageDispatcher')) {
+if (!function_exists('set_message_dispatcher')) {
     /**
      * @param \Closure $dispatcher
      * @param bool     $lock
      * @return \Closure|null
      */
-    function setMessageDispatcher(\Closure $dispatcher, $lock = true)
+    function set_message_dispatcher(\Closure $dispatcher, $lock = true)
     {
         $messageHandler = \MsgBridge\MessageBridge::getInstance();
         $existingDispatcher = $messageHandler->getDispatcher();
@@ -39,14 +39,14 @@ if (!function_exists('setMessageDispatcher')) {
     }
 }
 
-if (!function_exists('triggerMessage')) {
+if (!function_exists('trigger_message')) {
     /**
      * @param string $name
      * @param array  $argv
      * @param mixed  $emitter
      * @return mixed
      */
-    function triggerMessage($name, array $argv = array(), $emitter = null)
+    function trigger_message($name, array $argv = array(), $emitter = null)
     {
         $messageHandler = \MsgBridge\MessageBridge::getInstance();
         return $messageHandler->trigger($name, $argv, $emitter);
