@@ -19,7 +19,16 @@
     </section>
 
     <section class="main-content">
-      <p>Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
+      <h1>
+<a id="message-bridge" class="anchor" href="#message-bridge" aria-hidden="true"><span class="octicon octicon-link"></span></a>Message Bridge</h1>
+
+<p><a href="https://twitter.com/mamuz_de"><img src="http://img.shields.io/badge/author-@mamuz_de-blue.svg?style=flat-square" alt="Author"></a>
+<a href="https://travis-ci.org/mamuz/message-bridge"><img src="https://img.shields.io/travis/mamuz/message-bridge.svg?style=flat-square" alt="Build Status"></a>
+<a href="https://packagist.org/packages/mamuz/message-bridge"><img src="https://img.shields.io/packagist/v/mamuz/message-bridge.svg?style=flat-square" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/mamuz/message-bridge"><img src="https://img.shields.io/packagist/dt/mamuz/message-bridge.svg?style=flat-square" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/mamuz/message-bridge"><img src="https://img.shields.io/packagist/l/mamuz/message-bridge.svg?style=flat-square" alt="License"></a></p>
+
+<p>Message Bridge let you trigger messages from anywhere in a procedural or in an object-oriented way.
 A registered callback can dispatch or forward all triggered messages.
 Main idea is to support a decoupled event driven and aspect oriented application, thus object awareness to any
 logger or any event dispatcher is not needed anymore.</p>
@@ -31,7 +40,7 @@ logger or any event dispatcher is not needed anymore.</p>
 <a href="https://packagist.org/packages/mamuz/message-bridge"><code>mamuz/message-bridge</code></a> is via
 <a href="http://getcomposer.org/">composer</a>:</p>
 
-<div class="highlight highlight-sh"><pre>php composer.phar require mamuz/message-bridge:0.<span class="pl-k">*</span></pre></div>
+<div class="highlight highlight-source-shell"><pre>php composer.phar require mamuz/message-bridge:0.<span class="pl-k">*</span></pre></div>
 
 <h2>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
@@ -39,7 +48,7 @@ logger or any event dispatcher is not needed anymore.</p>
 <h3>
 <a id="procedural" class="anchor" href="#procedural" aria-hidden="true"><span class="octicon octicon-link"></span></a>Procedural</h3>
 
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c">// Register dispatch callback globally</span></span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c">// Register dispatch callback globally</span></span>
 <span class="pl-s1">set_message_dispatcher(<span class="pl-k">function</span> (<span class="pl-smi">$msg</span>, <span class="pl-smi">$argv</span>, <span class="pl-smi">$emitter</span>) {</span>
 <span class="pl-s1">    <span class="pl-k">if</span> (<span class="pl-smi">$msg</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">'</span>user.registered<span class="pl-pds">'</span></span>) {</span>
 <span class="pl-s1">        <span class="pl-c1">mail</span>(<span class="pl-s"><span class="pl-pds">'</span>foo@bar.com<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>A new user entered<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>UserId <span class="pl-pds">'</span></span> <span class="pl-k">.</span> <span class="pl-smi">$argv</span>[<span class="pl-s"><span class="pl-pds">'</span>userId<span class="pl-pds">'</span></span>]);</span>
@@ -52,7 +61,7 @@ logger or any event dispatcher is not needed anymore.</p>
 <h3>
 <a id="object-oriented-way-with-forwarding" class="anchor" href="#object-oriented-way-with-forwarding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object oriented way with forwarding</h3>
 
-<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$bridge</span> <span class="pl-k">=</span> <span class="pl-c1">\MsgBridge\</span><span class="pl-c1">MessageBridge</span><span class="pl-k">::</span>getInstance();</span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$bridge</span> <span class="pl-k">=</span> <span class="pl-c1">\MsgBridge\</span><span class="pl-c1">MessageBridge</span><span class="pl-k">::</span>getInstance();</span>
 <span class="pl-s1"><span class="pl-smi">$bridge</span><span class="pl-k">-&gt;</span>bindDispatcher(<span class="pl-k">function</span> (<span class="pl-smi">$msg</span>, <span class="pl-smi">$argv</span>, <span class="pl-smi">$emitter</span>) <span class="pl-k">use</span> (<span class="pl-smi">$eventManager</span>) {</span>
 <span class="pl-s1">    <span class="pl-smi">$eventManager</span><span class="pl-k">-&gt;</span>trigger(<span class="pl-smi">$msg</span>, <span class="pl-smi">$argv</span>, <span class="pl-smi">$emitter</span>);</span>
 <span class="pl-s1">});</span>
@@ -60,6 +69,35 @@ logger or any event dispatcher is not needed anymore.</p>
 <span class="pl-s1"><span class="pl-c">// ...</span></span>
 <span class="pl-s1"></span>
 <span class="pl-s1"><span class="pl-smi">$bridge</span><span class="pl-k">-&gt;</span>trigger(<span class="pl-s"><span class="pl-pds">'</span>user.registered<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>userId<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">1234</span>));</span></pre></div>
+
+<h2>
+<a id="locking-concept-and-test-isolation" class="anchor" href="#locking-concept-and-test-isolation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Locking concept and Test Isolation</h2>
+
+<p>To prevent side-effects the dispatcher can be registered with write protection.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$locked</span> <span class="pl-k">=</span> <span class="pl-c1">true</span>;</span>
+<span class="pl-s1">set_message_dispatcher(<span class="pl-smi">$closure</span>, <span class="pl-smi">$locked</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// This will throw a RuntimeException now</span></span>
+<span class="pl-s1">set_message_dispatcher(<span class="pl-smi">$anotherClosure</span>);</span></pre></div>
+
+<p>In Unit Tests you should not register a dispatcher with write protection,
+otherwise test isolation is not given.
+Instead of that implement following snippet to the tearDown method.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">tearDown</span>()</span>
+<span class="pl-s1">{</span>
+<span class="pl-s1">    <span class="pl-c1">\MsgBridge\</span><span class="pl-c1">MessageBridge</span><span class="pl-k">::</span>getInstance()<span class="pl-k">-&gt;</span>unsetDispatcher();</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>As an alternative you can add the provided TestListener to your phpunit.xml.
+This Listener will do the job for you automaticly.</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">phpunit</span>&gt;
+    &lt;<span class="pl-ent">listeners</span>&gt;
+        &lt;<span class="pl-ent">listener</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>\MsgBridge\TestListener<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">listener</span>&gt;
+    &lt;/<span class="pl-ent">listeners</span>&gt;
+&lt;/<span class="pl-ent">phpunit</span>&gt;</pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/mamuz/message-bridge">Message-bridge</a> is maintained by <a href="https://github.com/mamuz">mamuz</a>.</span>
