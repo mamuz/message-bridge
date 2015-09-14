@@ -59,7 +59,7 @@ To prevent side-effects the dispatcher can be registered with write protection.
 $locked = true;
 set_message_dispatcher($closure, $locked);
 
-// This will throw a RuntimeException
+// This will throw a RuntimeException now
 set_message_dispatcher($anotherClosure);
 ```
 
