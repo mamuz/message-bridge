@@ -28,8 +28,9 @@ if (!function_exists('set_message_dispatcher')) {
      * @param \Closure $dispatcher
      * @param bool     $lock
      * @return \Closure|null
+     * @throws \RuntimeException
      */
-    function set_message_dispatcher(\Closure $dispatcher, $lock = true)
+    function set_message_dispatcher(\Closure $dispatcher, $lock = false)
     {
         $messageHandler = \MsgBridge\MessageBridge::getInstance();
         $existingDispatcher = $messageHandler->getDispatcher();

@@ -50,3 +50,37 @@ $bridge->bindDispatcher(function ($msg, $argv, $emitter) use ($eventManager) {
 
 $bridge->trigger('user.registered', array('userId' => 1234));
 ```
+
+## Locking concept and Test Isolation
+
+To prevent side-effects the dispatcher can be registered with write protection.
+
+```php
+$locked = true;
+set_message_dispatcher($closure, $locked);
+
+// This will throw a RuntimeException
+set_message_dispatcher($anotherClosure);
+```
+
+In Unit Tests you should not register a dispatcher with write protection,
+otherwise test isolation is not given.
+Instead of that implement following snippet to the tearDown method.
+
+```php
+public function tearDown()
+{
+    \MsgBridge\MessageBridge::getInstance()->unsetDispatcher();
+}
+```
+
+As an alternative you can add the provided TestListener to your phpunit.xml.
+This Listener will do the job for you automaticly.
+
+```xml
+<phpunit>
+    <listeners>
+        <listener class="\MsgBridge\TestListener"></listener>
+    </listeners>
+</phpunit>
+```

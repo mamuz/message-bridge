@@ -59,8 +59,9 @@ class MessageBridge
     /**
      * @param \Closure $dispatcher
      * @param bool     $lock
+     * @throws \RuntimeException
      */
-    public function bindDispatcher(\Closure $dispatcher, $lock = true)
+    public function bindDispatcher(\Closure $dispatcher, $lock = false)
     {
         if ($this->dispatcher && $this->dispatcherIsLocked) {
             throw new \RuntimeException('MessageDispatcher is already set and locked');
@@ -76,6 +77,18 @@ class MessageBridge
     public function getDispatcher()
     {
         return $this->dispatcher;
+    }
+
+    /**
+     * @throws \RuntimeException
+     */
+    public function unsetDispatcher()
+    {
+        if ($this->dispatcherIsLocked) {
+            throw new \RuntimeException('MessageDispatcher is locked');
+        }
+
+        $this->dispatcher = null;
     }
 
     /**

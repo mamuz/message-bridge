@@ -1,8 +1,16 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## v0.2.1 - UNRELEASED
+## v0.3.1 - UNRELEASED
 - Nothing yet.
+
+## v0.3.0 - 2015-09-14
+### Added
+- Unsetter
+- TestListener for PhpUnit
+
+### Changed
+- Default value for lock argument is false
 
 ## v0.2.0 - 2015-09-13
 ### Changed

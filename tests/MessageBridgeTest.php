@@ -25,8 +25,20 @@
 
 namespace MsgBridgeTest;
 
+use MsgBridge\MessageBridge;
+
 class MessageBridgeTest extends \PHPUnit_Framework_TestCase
 {
+    /** @var \Closure */
+    private $dispatcher;
+
+    public function setUp()
+    {
+        $this->dispatcher = function ($name, $argv, $emitter) {
+            return array($name, $argv, $emitter);
+        };
+    }
+
     public function testTriggerMessageWithoutDispatcher()
     {
         $this->assertFalse(trigger_message('Foo'));
@@ -34,26 +46,28 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
 
     public function testBindDispatcherUnlocked()
     {
-        $dispatcher = function ($name, $argv, $emitter) {
-        };
-        $dispatcher2 = function ($name, $argv, $emitter) {
-        };
+        $this->assertNull(set_message_dispatcher($this->dispatcher));
+        $this->assertSame($this->dispatcher, set_message_dispatcher(clone $this->dispatcher));
+    }
 
-        $this->assertNull(set_message_dispatcher($dispatcher, false));
-        $this->assertSame($dispatcher, set_message_dispatcher($dispatcher2, false));
+    public function testUnsetUnlockedDispatcher()
+    {
+        set_message_dispatcher($this->dispatcher);
+        $this->assertNotFalse(trigger_message('Foo'));
+        MessageBridge::getInstance()->unsetDispatcher();
+        $this->assertFalse(trigger_message('Foo'));
     }
 
     public function testBindDispatcherLocked()
     {
-        $dispatcher = function ($name, $argv, $emitter) {
-            return array($name, $argv, $emitter);
-        };
-
-        set_message_dispatcher($dispatcher);
+        set_message_dispatcher($this->dispatcher, true);
         $this->setExpectedException('RuntimeException');
-        set_message_dispatcher($dispatcher);
+        set_message_dispatcher($this->dispatcher);
     }
 
+    /**
+     * @depends testBindDispatcherLocked
+     */
     public function testTriggerMessage()
     {
         $name = 'foo';
