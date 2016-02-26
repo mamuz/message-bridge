@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Message-bridge by mamuz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Message-bridge</h1>
-      <h2 class="project-tagline">Message bridge to support a decoupled event driven and aspect oriented application</h2>
-      <a href="https://github.com/mamuz/message-bridge" class="btn">View on GitHub</a>
-      <a href="https://github.com/mamuz/message-bridge/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/mamuz/message-bridge/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <section class="main-content">
-      <h1>
-<a id="message-bridge" class="anchor" href="#message-bridge" aria-hidden="true"><span class="octicon octicon-link"></span></a>Message Bridge</h1>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Message-bridge by mamuz</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Message-bridge</h1>
+        <h2>Message bridge to support a decoupled event driven and aspect oriented application</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/mamuz/message-bridge/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/mamuz/message-bridge/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/mamuz/message-bridge" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="message-bridge" class="anchor" href="#message-bridge" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Message Bridge</h1>
 
 <p><a href="https://twitter.com/mamuz_de"><img src="http://img.shields.io/badge/author-@mamuz_de-blue.svg?style=flat-square" alt="Author"></a>
 <a href="https://travis-ci.org/mamuz/message-bridge"><img src="https://img.shields.io/travis/mamuz/message-bridge.svg?style=flat-square" alt="Build Status"></a>
@@ -34,7 +43,7 @@ Main idea is to support a decoupled event driven and aspect oriented application
 logger or any event dispatcher is not needed anymore.</p>
 
 <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>The recommended way to install
 <a href="https://packagist.org/packages/mamuz/message-bridge"><code>mamuz/message-bridge</code></a> is via
@@ -43,10 +52,10 @@ logger or any event dispatcher is not needed anymore.</p>
 <div class="highlight highlight-source-shell"><pre>php composer.phar require mamuz/message-bridge:0.<span class="pl-k">*</span></pre></div>
 
 <h2>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
 
 <h3>
-<a id="procedural" class="anchor" href="#procedural" aria-hidden="true"><span class="octicon octicon-link"></span></a>Procedural</h3>
+<a id="procedural" class="anchor" href="#procedural" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Procedural</h3>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c">// Register dispatch callback globally</span></span>
 <span class="pl-s1">set_message_dispatcher(<span class="pl-k">function</span> (<span class="pl-smi">$msg</span>, <span class="pl-smi">$argv</span>, <span class="pl-smi">$emitter</span>) {</span>
@@ -59,7 +68,7 @@ logger or any event dispatcher is not needed anymore.</p>
 <span class="pl-s1">trigger_message(<span class="pl-s"><span class="pl-pds">'</span>user.registered<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>userId<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">1234</span>));</span></pre></div>
 
 <h3>
-<a id="object-oriented-way-with-forwarding" class="anchor" href="#object-oriented-way-with-forwarding" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object oriented way with forwarding</h3>
+<a id="object-oriented-way-with-forwarding" class="anchor" href="#object-oriented-way-with-forwarding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Object oriented way with forwarding</h3>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$bridge</span> <span class="pl-k">=</span> <span class="pl-c1">\MsgBridge\</span><span class="pl-c1">MessageBridge</span><span class="pl-k">::</span>getInstance();</span>
 <span class="pl-s1"><span class="pl-smi">$bridge</span><span class="pl-k">-&gt;</span>bindDispatcher(<span class="pl-k">function</span> (<span class="pl-smi">$msg</span>, <span class="pl-smi">$argv</span>, <span class="pl-smi">$emitter</span>) <span class="pl-k">use</span> (<span class="pl-smi">$eventManager</span>) {</span>
@@ -71,7 +80,7 @@ logger or any event dispatcher is not needed anymore.</p>
 <span class="pl-s1"><span class="pl-smi">$bridge</span><span class="pl-k">-&gt;</span>trigger(<span class="pl-s"><span class="pl-pds">'</span>user.registered<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>userId<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-c1">1234</span>));</span></pre></div>
 
 <h2>
-<a id="locking-concept-and-test-isolation" class="anchor" href="#locking-concept-and-test-isolation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Locking concept and Test Isolation</h2>
+<a id="locking-concept-and-test-isolation" class="anchor" href="#locking-concept-and-test-isolation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Locking concept and Test Isolation</h2>
 
 <p>To prevent side-effects the dispatcher can be registered with write protection.</p>
 
@@ -98,15 +107,9 @@ This Listener will do the job for you automaticly.</p>
         &lt;<span class="pl-ent">listener</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>\MsgBridge\TestListener<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">listener</span>&gt;
     &lt;/<span class="pl-ent">listeners</span>&gt;
 &lt;/<span class="pl-ent">phpunit</span>&gt;</pre></div>
+      </section>
+    </div>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/mamuz/message-bridge">Message-bridge</a> is maintained by <a href="https://github.com/mamuz">mamuz</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
+    
   </body>
 </html>
