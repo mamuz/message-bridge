@@ -76,7 +76,7 @@ class MessageBridge
     /**
      * @return callable|null
      */
-    public function getDispatcher() : callable
+    public function getDispatcher()
     {
         return $this->dispatcher;
     }
