@@ -1,7 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## v1.0.0 - UNRELEASED
+## v1.0.1 - UNRELEASED
+Nothing yet.
+
+## v1.0.0 - 2016-09-27
 ### Changed
 - PHP7 migration with strict typing
 
