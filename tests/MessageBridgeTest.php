@@ -29,7 +29,7 @@ use MsgBridge\MessageBridge;
 
 class MessageBridgeTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var \Closure */
+    /** @var callable */
     private $dispatcher;
 
     public function setUp()
