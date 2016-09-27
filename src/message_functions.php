@@ -23,14 +23,16 @@
  * SOFTWARE.
  */
 
+declare(strict_types = 1);
+
 if (!function_exists('set_message_dispatcher')) {
     /**
-     * @param \Closure $dispatcher
+     * @param callable $dispatcher
      * @param bool     $lock
-     * @return \Closure|null
+     * @return callable|null
      * @throws \RuntimeException
      */
-    function set_message_dispatcher(\Closure $dispatcher, $lock = false)
+    function set_message_dispatcher(callable $dispatcher, bool $lock = false)
     {
         $messageHandler = \MsgBridge\MessageBridge::getInstance();
         $existingDispatcher = $messageHandler->getDispatcher();
@@ -47,7 +49,7 @@ if (!function_exists('trigger_message')) {
      * @param mixed  $emitter
      * @return mixed
      */
-    function trigger_message($name, array $argv = array(), $emitter = null)
+    function trigger_message(string $name, array $argv = array(), $emitter = null)
     {
         $messageHandler = \MsgBridge\MessageBridge::getInstance();
         return $messageHandler->trigger($name, $argv, $emitter);

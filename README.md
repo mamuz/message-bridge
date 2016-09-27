@@ -12,14 +12,12 @@ A registered callback can dispatch or forward all triggered messages.
 Main idea is to support a decoupled event driven and aspect oriented application, thus object awareness to any
 logger or any event dispatcher is not needed anymore.
 
-## Installation
+##  Installation
 
-The recommended way to install
-[`mamuz/message-bridge`](https://packagist.org/packages/mamuz/message-bridge) is via
-[composer](http://getcomposer.org/):
+Install the latest version with
 
 ```sh
-php composer.phar require mamuz/message-bridge:0.*
+$ composer require mamuz/message-bridge
 ```
 
 ## Example

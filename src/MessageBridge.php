@@ -23,6 +23,8 @@
  * SOFTWARE.
  */
 
+declare(strict_types = 1);
+
 namespace MsgBridge;
 
 class MessageBridge
@@ -30,7 +32,7 @@ class MessageBridge
     /** @var self */
     private static $instance;
 
-    /** @var \Closure|null */
+    /** @var callable|null */
     private $dispatcher;
 
     /** @var bool */
@@ -47,7 +49,7 @@ class MessageBridge
     /**
      * @return self
      */
-    public static function getInstance()
+    public static function getInstance() : self
     {
         if (!self::$instance) {
             self::$instance = new self;
@@ -57,11 +59,11 @@ class MessageBridge
     }
 
     /**
-     * @param \Closure $dispatcher
+     * @param callable $dispatcher
      * @param bool     $lock
      * @throws \RuntimeException
      */
-    public function bindDispatcher(\Closure $dispatcher, $lock = false)
+    public function bindDispatcher(callable $dispatcher, bool $lock = false)
     {
         if ($this->dispatcher && $this->dispatcherIsLocked) {
             throw new \RuntimeException('MessageDispatcher is already set and locked');
@@ -72,9 +74,9 @@ class MessageBridge
     }
 
     /**
-     * @return \Closure|null
+     * @return callable|null
      */
-    public function getDispatcher()
+    public function getDispatcher() : callable
     {
         return $this->dispatcher;
     }
@@ -97,7 +99,7 @@ class MessageBridge
      * @param mixed  $emitter
      * @return mixed
      */
-    public function trigger($name, array $argv = array(), $emitter = null)
+    public function trigger(string $name, array $argv = array(), $emitter = null)
     {
         if (!$this->getDispatcher()) {
             return false;

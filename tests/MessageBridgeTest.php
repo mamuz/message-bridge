@@ -61,7 +61,7 @@ class MessageBridgeTest extends \PHPUnit_Framework_TestCase
     public function testBindDispatcherLocked()
     {
         set_message_dispatcher($this->dispatcher, true);
-        $this->setExpectedException('RuntimeException');
+        $this->expectException('RuntimeException');
         set_message_dispatcher($this->dispatcher);
     }
 
